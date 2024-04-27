@@ -11,7 +11,7 @@ vendas = {
     2: {'produto':'Camisa', 'tamanho':'M', 'estampa':'Sim', 'cor':'Branca', 'preco':29.90, 'quantidade':1},
     3: {'produto':'Short', 'tamanho':'M', 'estampa':'Não', 'cor':'Vermelha', 'preco':35.90, 'quantidade':1},
     4: {'produto':'Bermuda', 'tamanho':'G', 'estampa':'Não', 'cor':'Azul', 'preco':49.90, 'quantidade':1},
-    5: {'produto':'Camisa', 'tamanho':'M', 'estampa':'Não', 'cor':'Laranja', 'preco':29.90, 'quantidade':1},
+    5: {'produto':'Camisa', 'tamanho':'M', 'estampa':'Não', 'cor':'Laranja', 'preco':29.90, 'quantidade':3},
 }
 
 
@@ -24,10 +24,10 @@ def index():
 @app.get('/{id_venda}')
 def consulta_venda(id_venda:int):
 
-    if id_venda and isinstance(id_venda, int):
+    if id_venda in vendas:
         return vendas[id_venda]
     else:
-        return {'Error':'Venda não encontrada'}
+        return {'detail': [{'msg':'Venda não encontrada'}]}
 
 
 
